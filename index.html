@@ -1,13 +1,61 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alquiler</title>
+    <title>Alquiler de vehiculo</title>
 </head>
+
 <body>
+
+    <h1>Alquiler de vehiculo</h1>
+
+    <div>
+        <label>
+            <input type="radio" name="option" value="1">Valor por minuto de servicio
+        </label>
+        <label>
+            <input type="radio" name="option" value="2">Valor por kilómetro recorrido
+        </label>
+    </div>
+
+    <div>
+        <p>Seleccione el tipo de vehiculo</p>
+        <select id="tipoVehiculo">
+            <option value="1">Camioneta</option>
+            <option value="2">Minivan</option>
+            <option value="3">Campero</option>
+            <option value="4">Hibrido</option>
+            <option value="5">Camioneta con platón</option>
+            <option value="6">Microbus de 12 pasajero</option>
+            <option value="7">Microbus de 19 pasajero</option>
+            <option value="8">Bus</option>
+        </select>
+    </div>
+
+    <div>
+        <p>Escriba la cantidad de minutos o kilómetros del recorrido</p>
+        <label>
+            <input type="number" id="minutos" placeholder="Minutos">
+        </label>
+        <label>
+            <input type="number" id="kilometros" placeholder="Kilómetros">
+        </label>
+    </div>
+
+    <br>
     
+    <div>
+        <button id="calcular">Calcular costo de alquiler</button>
+    </div>
+
+    <div>
+        <p id="resultado"></p>
+    </div>
+
     <script src="Javascript/alquiler.js"></script>
 </body>
+
 </html>
