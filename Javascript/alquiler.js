@@ -1,25 +1,59 @@
+class Vehiculo {
+  constructor(nombre, capacidad, url) {
+    this.nombre = nombre;
+    this.capacidad = capacidad;
+    this.url = url;
+  }
+}
+
+const camioneta = new Vehiculo("Camioneta", 5, "../img/camioneta.jpg")
+const minivan = new Vehiculo("Minivan", 7, "../img/minivan.jpg")
+const campero = new Vehiculo("Campero", 5, "../img/campero.jpg")
+const hibrido = new Vehiculo("Hibrido", 5, "../img/hibrido.jpg")
+const camionetaPlaton = new Vehiculo("Camioneta con platón", 5, "../img/camionetaPlaton.jpg")
+const microbus12 = new Vehiculo("Microbus de 12", 12, "../img/microbus12.jpg")
+const microbus19 = new Vehiculo("Microbus de 19", 19, "../img/microbus19.jpg")
+const bus = new Vehiculo("Bus", 28, "../img/bus.jpg")
+
+const arrayVehiculos = [camioneta, minivan, campero, hibrido, camionetaPlaton, microbus12, microbus19, bus]
+
 // Definir los valores por minuto de servicio y valor por kilómetro recorrido para cada tipo de vehículo
 const valorPorMinutoServicio = {
-  "1": 601,
-  "2": 541,
-  "3": 555,
-  "4": 823,
-  "5": 823,
-  "6": 923,
-  "7": 1030,
-  "8": 1917
+  "camioneta": 601,
+  "minivan": 541,
+  "campero": 555,
+  "hibrido": 823,
+  "camionetaPlaton": 823,
+  "microbus12": 923,
+  "microbus19": 1030,
+  "bus": 1917
 };
 
 const valorPorKilometroRecorrido = {
-  "1": 1042,
-  "2": 1086,
-  "3": 1143,
-  "4": 978,
-  "5": 1233,
-  "6": 1295,
-  "7": 1550,
-  "8": 2751
+  "camioneta": 1042,
+  "minivan": 1086,
+  "campero": 1143,
+  "hibrido": 978,
+  "camionetaPlaton": 1233,
+  "microbus12": 1295,
+  "microbus19": 1550,
+  "bus": 2751
 };
+
+
+const contentServices = document.getElementById("contentVehiculos");
+
+arrayVehiculos.forEach(vehiculo => {
+  const div = document.createElement("div");
+  div.className = "contentCardVehiculo"
+  div.innerHTML = `<img src ="${vehiculo.url}">
+                   <h3> ${vehiculo.nombre} </h3>
+                   <p>Capacidad: ${vehiculo.capacidad} </p>
+                   <button class="cta">Alquilar</button>`;
+
+  contentServices.appendChild(div);
+})
+
 
 // Guardar los valores en el localStorage
 localStorage.setItem("valorPorMinutoServicio", JSON.stringify(valorPorMinutoServicio));
