@@ -17,6 +17,19 @@ const bus = new Vehiculo("Bus", 28, "../img/bus.jpg")
 
 const arrayVehiculos = [camioneta, minivan, campero, hibrido, camionetaPlaton, microbus12, microbus19, bus]
 
+const contentServices = document.getElementById("contentVehiculos");
+
+arrayVehiculos.forEach(vehiculo => {
+  const div = document.createElement("div");
+  div.className = "contentCardVehiculo"
+  div.innerHTML = `<img src ="${vehiculo.url}">
+                   <h3> ${vehiculo.nombre} </h3>
+                   <p>Capacidad: ${vehiculo.capacidad} </p>
+                   <button class="cta">Alquilar</button>`;
+
+  contentServices.appendChild(div);
+})
+
 // Definir los valores por minuto de servicio y valor por kilómetro recorrido para cada tipo de vehículo
 const valorPorMinutoServicio = {
   "camioneta": 601,
@@ -39,20 +52,6 @@ const valorPorKilometroRecorrido = {
   "microbus19": 1550,
   "bus": 2751
 };
-
-
-const contentServices = document.getElementById("contentVehiculos");
-
-arrayVehiculos.forEach(vehiculo => {
-  const div = document.createElement("div");
-  div.className = "contentCardVehiculo"
-  div.innerHTML = `<img src ="${vehiculo.url}">
-                   <h3> ${vehiculo.nombre} </h3>
-                   <p>Capacidad: ${vehiculo.capacidad} </p>
-                   <button class="cta">Alquilar</button>`;
-
-  contentServices.appendChild(div);
-})
 
 
 // Guardar los valores en el localStorage
