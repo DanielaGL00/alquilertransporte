@@ -6,14 +6,14 @@ class Vehiculo {
   }
 }
 
-const camioneta = new Vehiculo("Camioneta", 5, "../img/camioneta.jpg")
-const minivan = new Vehiculo("Minivan", 7, "../img/minivan.jpg")
-const campero = new Vehiculo("Campero", 5, "../img/campero.jpg")
-const hibrido = new Vehiculo("Hibrido", 5, "../img/hibrido.jpg")
-const camionetaPlaton = new Vehiculo("Camioneta con platón", 5, "../img/camionetaPlaton.jpg")
-const microbus12 = new Vehiculo("Microbus de 12", 12, "../img/microbus12.jpg")
-const microbus19 = new Vehiculo("Microbus de 19", 19, "../img/microbus19.jpg")
-const bus = new Vehiculo("Bus", 28, "../img/bus.jpg")
+const camioneta = new Vehiculo("Camioneta", 5, "img/camioneta.jpg")
+const minivan = new Vehiculo("Minivan", 7, "img/minivan.jpg")
+const campero = new Vehiculo("Campero", 5, "img/campero.jpg")
+const hibrido = new Vehiculo("Hibrido", 5, "img/hibrido.jpg")
+const camionetaPlaton = new Vehiculo("Camioneta con platón", 5, "img/camionetaPlaton.jpg")
+const microbus12 = new Vehiculo("Microbus de 12", 12, "img/microbus12.jpg")
+const microbus19 = new Vehiculo("Microbus de 19", 19, "img/microbus19.jpg")
+const bus = new Vehiculo("Bus", 28, "img/bus.jpg")
 
 const arrayVehiculos = [camioneta, minivan, campero, hibrido, camionetaPlaton, microbus12, microbus19, bus]
 
