@@ -1,12 +1,12 @@
 const valorPorMinutoServicio = {
-  "Camioneta": 1042,
-  "Minivan": 1086,
-  "Campero": 1143,
-  "Hibrido": 978,
-  "Platon": 1233,
-  "Microbus12": 1295,
-  "Microbus19": 1550,
-  "Bus": 2751
+  "Camioneta": 601,
+  "Minivan": 541,
+  "Campero": 555,
+  "Hibrido": 823,
+  "Platon": 823,
+  "Microbus12": 923,
+  "Microbus19": 1030,
+  "Bus": 1917
 };
 
 const valorPorKilometroRecorrido = {
