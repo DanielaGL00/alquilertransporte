@@ -37,6 +37,14 @@ h3 {
     margin: 0;
 }
 
+h4 {
+    color: #363E4F;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 32px;
+    margin: 0;
+}
+
 p {
     color: #6D6970;
     font-weight: 400;
@@ -116,6 +124,7 @@ main .title p {
 
 .contentCardVehiculo img {
     border-radius: 8px 8px 0px 0px;
+    height: 220px;
 }
 
 .contentCardVehiculo {

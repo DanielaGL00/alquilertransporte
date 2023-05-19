@@ -1,83 +1,84 @@
-class Vehiculo {
-  constructor(nombre, capacidad, url) {
-    this.nombre = nombre;
-    this.capacidad = capacidad;
-    this.url = url;
-  }
-}
-
-const camioneta = new Vehiculo("Camioneta", 5, "img/camioneta.jpg")
-const minivan = new Vehiculo("Minivan", 7, "img/minivan.jpg")
-const campero = new Vehiculo("Campero", 5, "img/campero.jpg")
-const hibrido = new Vehiculo("Hibrido", 5, "img/hibrido.jpg")
-const camionetaPlaton = new Vehiculo("Camioneta con platón", 5, "img/camionetaPlaton.jpg")
-const microbus12 = new Vehiculo("Microbus de 12", 12, "img/microbus12.jpg")
-const microbus19 = new Vehiculo("Microbus de 19", 19, "img/microbus19.jpg")
-const bus = new Vehiculo("Bus", 28, "img/bus.jpg")
-
-const arrayVehiculos = [camioneta, minivan, campero, hibrido, camionetaPlaton, microbus12, microbus19, bus]
-
-const contentServices = document.getElementById("contentVehiculos");
-
-arrayVehiculos.forEach(vehiculo => {
-  const div = document.createElement("div");
-  div.className = "contentCardVehiculo"
-  div.innerHTML = `<img src ="${vehiculo.url}">
-                   <h3> ${vehiculo.nombre} </h3>
-                   <p>Capacidad: ${vehiculo.capacidad} </p>
-                   <button class="cta">Alquilar</button>`;
-
-  contentServices.appendChild(div);
-})
-
-// Definir los valores por minuto de servicio y valor por kilómetro recorrido para cada tipo de vehículo
 const valorPorMinutoServicio = {
-  "camioneta": 601,
-  "minivan": 541,
-  "campero": 555,
-  "hibrido": 823,
-  "camionetaPlaton": 823,
-  "microbus12": 923,
-  "microbus19": 1030,
-  "bus": 1917
+  "Camioneta": 1042,
+  "Minivan": 1086,
+  "Campero": 1143,
+  "Hibrido": 978,
+  "Platon": 1233,
+  "Microbus12": 1295,
+  "Microbus19": 1550,
+  "Bus": 2751
 };
 
 const valorPorKilometroRecorrido = {
-  "camioneta": 1042,
-  "minivan": 1086,
-  "campero": 1143,
-  "hibrido": 978,
-  "camionetaPlaton": 1233,
-  "microbus12": 1295,
-  "microbus19": 1550,
-  "bus": 2751
+  "Camioneta": 1042,
+  "Minivan": 1086,
+  "Campero": 1143,
+  "Hibrido": 978,
+  "Platon": 1233,
+  "Microbus12": 1295,
+  "Microbus19": 1550,
+  "Bus": 2751
 };
 
-
-// Guardar los valores en el localStorage
 localStorage.setItem("valorPorMinutoServicio", JSON.stringify(valorPorMinutoServicio));
 localStorage.setItem("valorPorKilometroRecorrido", JSON.stringify(valorPorKilometroRecorrido));
 
-// Obtener los elementos del DOM
 const optionRadios = document.getElementsByName("option");
-const tipoVehiculoSelect = document.getElementById("tipoVehiculo");
 const minutosInput = document.getElementById("minutos");
 const kilometrosInput = document.getElementById("kilometros");
 const calcularButton = document.getElementById("calcular");
-const resultadoP = document.getElementById("resultado");
+const contentVehiculos = document.getElementById("contentVehiculos");
 
+let arrayVehiculos = [];
 
-// Detectar el evento de click en el botón de calcular
 calcularButton.addEventListener("click", function() {
+  const optionValue = optionRadios[0].checked ? "1" : "2";
+  const input = optionValue === "1" ? minutosInput : kilometrosInput;
+  const inputValue = parseInt(input.value);
 
-  let valor;
-  if (optionRadios[0].checked) {
-  valor = valorPorMinutoServicio[tipoVehiculoSelect.value] * minutosInput.value;
-  } else if (optionRadios[1].checked) {
-  valor = valorPorKilometroRecorrido[tipoVehiculoSelect.value] * kilometrosInput.value;
-  } else {
-  valor = 0;
+  if (isNaN(inputValue)) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Por favor, ingrese un valor válido.',
+      confirmButtonText: 'Reintentar',
+    });
+      return;
   }
-  // Mostrar el resultado en el elemento HTML correspondiente
-  resultadoP.innerHTML = "El costo de alquiler es de $" + valor;
+
+
+  arrayVehiculos.forEach((vehiculo) => {
+    const valor = optionValue === "1"
+      ? valorPorMinutoServicio[vehiculo.nombre] * inputValue
+      : valorPorKilometroRecorrido[vehiculo.nombre] * inputValue;
+
+    const resultadoP = document.querySelector('.vehiculo-' + vehiculo.nombre + ' .resultado');
+    resultadoP.innerHTML = "Precio: $" + valor;
   });
+});
+
+fetch('datos_vehiculos.json')
+  .then(response => response.json())
+  .then(data => {
+    arrayVehiculos = data;
+    generarDOMVehiculos();
+  });
+
+function generarDOMVehiculos() {
+  arrayVehiculos.forEach((vehiculo, index) => {
+    const div = document.createElement("div");
+    div.className = "contentCardVehiculo vehiculo-" + vehiculo.nombre.replace(/ /g, '_');
+    div.classList.add("col-xl-3", "col,md-6", "col-satisfies,-12")
+    div.innerHTML = `
+    <div class="card" style="width: 24rem;">
+  <img src ="${vehiculo.url}" class="card-img-top" alt="vehiculo">
+  <div class="card-body">
+    <h3 class="card-title">${vehiculo.nombre}</h3>
+    <p class="card-text">Capacidad: ${vehiculo.capacidad}</p>
+    <br>
+    <div class="row">
+    <h4 class="resultado"></h4>
+    <button class="btn btn-secondary">Alquilar</button>`
+    contentVehiculos.appendChild(div);
+  });
+}

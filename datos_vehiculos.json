@@ -1,0 +1,10 @@
+[
+    { "nombre": "Camioneta", "capacidad": 5, "url": "img/camioneta.jpg" },
+    { "nombre": "Minivan", "capacidad": 7, "url": "img/minivan.jpg" },
+    { "nombre": "Campero", "capacidad": 5, "url": "img/campero.jpg" },
+    { "nombre": "Hibrido", "capacidad": 5, "url": "img/hibrido.jpg" },
+    { "nombre": "Platon", "capacidad": 5, "url": "img/camionetaPlaton.jpg" },
+    { "nombre": "Microbus12", "capacidad": 12, "url": "img/microbus12.jpg" },
+    { "nombre": "Microbus19", "capacidad": 19, "url": "img/microbus19.jpg" },
+    { "nombre": "Bus", "capacidad": 18, "url": "img/bus.jpg" }
+  ]  
