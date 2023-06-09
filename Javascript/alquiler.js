@@ -78,7 +78,7 @@ function generarDOMVehiculos() {
     <br>
     <div class="row">
     <h4 class="resultado"></h4>
-    <a class="btn btn-secondary" href="html/contacto.html">Alquilar</a>`
+    <a class="btn btn-secondary" href="../html/contacto.html">Alquilar</a>`
     contentVehiculos.appendChild(div);
   });
 }
